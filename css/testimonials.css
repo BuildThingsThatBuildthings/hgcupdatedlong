@@ -1,0 +1,83 @@
+/*******************************
+ * Testimonials Section
+ *******************************/
+.testimonials {
+    padding: var(--spacing-lg) 0;
+    background: var(--light-bg);
+    overflow: hidden; /* Hide overflow for smooth scrolling */
+    position: relative;
+}
+
+.testimonial-cards {
+    display: flex; /* Change to flex for horizontal layout */
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+    animation: scroll 60s linear infinite; /* Increased duration for smoother scrolling */
+    width: max-content; /* Allow container to be as wide as needed */
+}
+
+.testimonial {
+    background: var(--white);
+    padding: var(--spacing-md);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 280px; /* Ensure minimum width */
+    max-width: 280px; /* Set maximum width */
+    flex-shrink: 0; /* Prevent testimonials from shrinking */
+}
+
+.testimonial img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.testimonial p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: var(--secondary-color);
+}
+
+.testimonial cite {
+    display: block;
+    font-style: italic;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% / 2)); /* Adjusted for duplicated testimonials */
+    }
+}
+
+/* Pause animation on hover */
+.testimonial-cards:hover {
+    animation-play-state: paused;
+}
+
+/* Add gradient overlay to create smooth fade effect */
+.testimonials::before,
+.testimonials::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 200px; /* Increased width for better fade effect */
+    height: 100%;
+    z-index: 2;
+}
+
+.testimonials::before {
+    left: 0;
+    background: linear-gradient(to right, var(--light-bg), transparent);
+}
+
+.testimonials::after {
+    right: 0;
+    background: linear-gradient(to left, var(--light-bg), transparent);
+}
